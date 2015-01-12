@@ -64,6 +64,7 @@ MonoBehaviour:
   _sides: 6
   _size: .550000012
   _centreExtrusion: .100000001
+  _height: .5
 --- !u!114 &11449596
 MonoBehaviour:
   m_ObjectHideFlags: 1
