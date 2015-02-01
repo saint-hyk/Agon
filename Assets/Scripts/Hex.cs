@@ -66,5 +66,9 @@ public class Hex : MonoBehaviour {
 
    #endregion static methods
 
+   public void SetMaterial(Material material) {
+      GetComponent<Renderer>().material = material;
+   }
+
    #endregion methods
 }

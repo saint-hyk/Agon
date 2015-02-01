@@ -18,6 +18,7 @@ public class Board : MonoBehaviour {
 
    #region fields
 
+   // Must have Hex component
    [SerializeField]
    private GameObject _hexPrefab;
 
@@ -26,6 +27,9 @@ public class Board : MonoBehaviour {
 
    [SerializeField]
    private int _edgeSize = 6;
+
+   [SerializeField]
+   private Material[] _materials;
 
    private Hex[][] _hexes;
 
@@ -72,7 +76,7 @@ public class Board : MonoBehaviour {
       GameObject newHex;
       for (i = 0; i < _hexes.Length; ++i) {
          for (int j = 0; j < _hexes[i].Length; ++j) {
-            newHex = ((GameObject)Instantiate(_hexPrefab));
+            newHex = (GameObject)Instantiate(_hexPrefab);
             newHex.transform.parent = transform;
             _hexes[i][j] = newHex.GetComponent<Hex>();
          }
@@ -83,6 +87,8 @@ public class Board : MonoBehaviour {
       PositionHexes();
 
       SetHexNeighbours();
+
+      ApplyMaterials();
    }
 
    private void PositionHexes() {
@@ -206,6 +212,27 @@ public class Board : MonoBehaviour {
          case Hex.HexDirections.UpperLeft:
             _hexes[x][y].Neighbours[(int)Hex.HexDirections.UpperLeft] = _hexes[x + 1][y - (x < _edgeSize - 1 ? 0 : 1)];
             break;
+      }
+   }
+
+   private void ApplyMaterials() {
+      int finalIndex = _edgeSize * 2 - 2;
+
+      for (int i = 0; i < _edgeSize; ++i) {
+         Material current = _materials[i % _materials.Length];
+
+         for (int j = i; j < _hexes[i].Length - i; ++j) {
+            int farColumn = _hexes[j].Length - 1 - i;
+
+            _hexes[i][j].SetMaterial(current);
+            _hexes[j][i].SetMaterial(current);
+
+            _hexes[finalIndex - i][j].SetMaterial(current);
+            _hexes[finalIndex - j][i].SetMaterial(current);
+
+            _hexes[j][farColumn].SetMaterial(current);
+            _hexes[finalIndex - j][farColumn].SetMaterial(current);
+         }
       }
    }
 

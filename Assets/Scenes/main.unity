@@ -104,6 +104,9 @@ MonoBehaviour:
   _hexPrefab: {fileID: 149596, guid: af62e9b3a6f4bbf448bdb30e81226170, type: 2}
   _hexPositionOffset: {x: .879999995, y: 1}
   _edgeSize: 6
+  _materials:
+  - {fileID: 2100000, guid: 1b00c35f14d346e449635a5e3505ce8b, type: 2}
+  - {fileID: 2100000, guid: 6f757b6b0ff18d846b82b051c556593f, type: 2}
 --- !u!4 &103264315
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +231,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .558823526, g: .213667825, b: .281244159, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
