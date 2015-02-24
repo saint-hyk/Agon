@@ -21,12 +21,20 @@ public class Hex : MonoBehaviour {
 
    #endregion enums
 
+   #region properties
+
+   public Hex[] Neighbours {
+      get { return _neighbours; }
+   }
+
+   #endregion properties
+
    #region fields
 
    /// <summary>
    /// Neigbours are organised according to Hex.HexDirections
    /// </summary>
-   public Hex[] Neighbours;
+   private Hex[] _neighbours;
 
    #endregion fields
 
@@ -34,8 +42,8 @@ public class Hex : MonoBehaviour {
 
    #region unity methods
 
-   private void OnEnabled() {
-      Neighbours = new Hex[6];
+   private void OnEnable() {
+      _neighbours = new Hex[6];
    }
 
    #endregion unity methods
