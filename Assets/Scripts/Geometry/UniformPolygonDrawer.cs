@@ -4,13 +4,24 @@
 // Licence:  GNU General Public License
 // -----------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
 namespace Geometry {
    public class UniformPolygonDrawer : MonoBehaviour {
+      #region properties
+
+      public float Size {
+         get { return _size; }
+      }
+
+      public float Height {
+         get { return _height; }
+      }
+
+      #endregion properties
+
       #region fields
 
       [SerializeField]
@@ -29,9 +40,7 @@ namespace Geometry {
 
       #region methods
 
-      #region unity methods
-
-      private void OnEnable() {
+      public void Initialize() {
          Mesh mesh = new Mesh();
 
          MeshFilter filter = GetComponent<MeshFilter>();
@@ -43,7 +52,9 @@ namespace Geometry {
          CreateUniformPolygon(ref mesh);
       }
 
-      #endregion unity methods
+      public void SetMaterial(Material material) {
+         GetComponent<Renderer>().material = material;
+      }
 
       private void CreateUniformPolygon(ref Mesh mesh) {
          List<Vector3> vertices = new List<Vector3>();

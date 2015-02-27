@@ -8,6 +8,8 @@ using System.Collections.Generic;
 
 namespace Utils {
    public static class ExtentionMethods {
+      #region methods
+
       public static void AddInOrder<T>(this List<T> list, params T[] items) {
          foreach (T item in items) {
             list.Add(item);
@@ -19,5 +21,7 @@ namespace Utils {
             list.Add(offset + item);
          }
       }
+
+      #endregion methods
    }
 }

@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &103264313
 GameObject:
@@ -82,6 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 103264315}
+  - 114: {fileID: 103264316}
   - 114: {fileID: 103264314}
   m_Layer: 0
   m_Name: Board
@@ -103,7 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hexPrefab: {fileID: 149596, guid: af62e9b3a6f4bbf448bdb30e81226170, type: 2}
   _hexPositionOffset: {x: .879999995, y: 1}
-  _edgeSize: 6
   _materials:
   - {fileID: 2100000, guid: 1b00c35f14d346e449635a5e3505ce8b, type: 2}
   - {fileID: 2100000, guid: 6f757b6b0ff18d846b82b051c556593f, type: 2}
@@ -119,6 +120,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &103264316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 103264313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1ca8ffe37a2ec428799602fa26412a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _queenPrefab: {fileID: 149596, guid: ea31e32943346a84b9eb3ab14c6a77a9, type: 2}
+  _knightPrefab: {fileID: 172886, guid: 31b102bd6812c6f4ea154413248c3549, type: 2}
+  _playerOneMaterial: {fileID: 2100000, guid: cfd7882f2f910c94180c7f53a4594950, type: 2}
+  _playerTwoMaterial: {fileID: 2100000, guid: e52f8024ef82f5648a2b0237ab6e3047, type: 2}
+  _verticalPieceOffset: .550000012
 --- !u!1 &1384448347
 GameObject:
   m_ObjectHideFlags: 0
