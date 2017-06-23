@@ -41,6 +41,12 @@ namespace HexBoard {
          set { _currentPiece = value; }
       }
 
+      public bool Selected {
+         set {
+            //TODO: prettyshader.visible = value
+         }
+      }
+
       #endregion properties
 
       #region fields

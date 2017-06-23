@@ -14,6 +14,29 @@ namespace Agon {
    /// </summary>
    [RequireComponent(typeof(Board))]
    public class GameController : MonoBehaviour {
+      #region classes
+
+      private class SelectedHex {
+         private Hex _selectedHex = null;
+
+         public Hex Current {
+            get { return _selectedHex; }
+            set {
+               if (_selectedHex != null) {
+                  _selectedHex.Selected = false;
+               }
+
+               _selectedHex = value;
+
+               if (_selectedHex != null) {
+                  _selectedHex.Selected = true;
+               }
+            }
+         }
+      }
+
+      #endregion classes
+
       #region enums
 
       private enum Player {
@@ -32,6 +55,9 @@ namespace Agon {
       #region fields
 
       [SerializeField]
+      private Utils.Backboard _backboard;
+
+      [SerializeField]
       private GameObject _queenPrefab;
 
       [SerializeField]
@@ -47,7 +73,7 @@ namespace Agon {
       private float _verticalPieceOffset;
 
       private Board _board;
-      private Hex _selectedHex;
+      private SelectedHex _selectedHex;
 
       #endregion fields
 
@@ -57,11 +83,14 @@ namespace Agon {
 
       private void Awake() {
          _board = GetComponent<Board>();
+         _selectedHex = new SelectedHex();
       }
 
       private void Start() {
          _board.Initialize(AGON_BOARD_SIZE);
-         _board.HexClicked += HexClicked;
+         _board.HexClicked += OnHexClicked;
+
+         _backboard.BackboardClicked += OnBackboardClicked;
 
          InitializePieces();
       }
@@ -110,9 +139,21 @@ namespace Agon {
          }
       }
 
-      private void HexClicked(object sender, EventArgs e) {
+      private void OnHexClicked(object sender, EventArgs e) {
          Hex hex = (Hex)sender;
-         Debug.Log(hex.CurrentPiece);
+         if (_selectedHex.Current == null) {
+            _selectedHex.Current = hex;
+         } else {
+            //if legal
+               //move selected hex to this hex
+               _selectedHex.Current = null;
+            //else
+               //complain?
+         }
+      }
+
+      private void OnBackboardClicked(object sender, EventArgs e) {
+         _selectedHex.Current = null;
       }
 
       #endregion methods

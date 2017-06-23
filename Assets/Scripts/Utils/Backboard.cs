@@ -10,6 +10,11 @@ using UnityEngine;
 namespace Utils {
    [RequireComponent(typeof(Camera))]
    public class Backboard : MonoBehaviour {
+      #region events
+
+      public event EventHandler BackboardClicked;
+
+      #endregion events
 
       #region fields
 
@@ -48,7 +53,11 @@ namespace Utils {
       #endregion unity methods
 
       private void OnMouseDown() {
-         Debug.Log("Backboard");
+         EventHandler handler = BackboardClicked;
+
+         if (handler != null) {
+            handler(this, null);
+         }
       }
 
       #endregion methods
