@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1ca8ffe37a2ec428799602fa26412a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _backboard: {fileID: 1469846658}
   _queenPrefab: {fileID: 149596, guid: ea31e32943346a84b9eb3ab14c6a77a9, type: 2}
   _knightPrefab: {fileID: 172886, guid: 31b102bd6812c6f4ea154413248c3549, type: 2}
   _playerOneMaterial: {fileID: 2100000, guid: cfd7882f2f910c94180c7f53a4594950, type: 2}
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccf69a7ded884d27b0a67a1c541ef01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _thickness: 0.5
 --- !u!81 &1469846659
 AudioListener:
   m_ObjectHideFlags: 0
